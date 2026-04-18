@@ -43,8 +43,7 @@ def _parse_mock_todo(ical, list_name, saved):
 
 class TestCalendarWriterLivePath:
     def _writer(self):
-        w = CalendarWriter(mock_mode=False)
-        return w
+        return CalendarWriter(mock_mode=False)
 
     def test_create_event_uses_named_calendar(self, monkeypatch):
         monkeypatch.setenv("APPLE_SYNC_MOCK", "false")

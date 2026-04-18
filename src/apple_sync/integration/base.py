@@ -10,7 +10,7 @@ from .mock_store import MockCalDAVStore
 from .permission_manager import PermissionManager
 
 
-class BaseIntegration(ABC):
+class BaseIntegration(ABC):  # noqa: B024
     """Provides shared CalDAV client access and mock mode detection."""
 
     _MOCK_ENV = "APPLE_SYNC_MOCK"

@@ -31,7 +31,7 @@ class CalDAVClient:
     """Creates an authenticated session to Apple iCloud CalDAV."""
 
     _APPLE_ID_ENV = "APPLE_ID"
-    _APP_PASSWORD_ENV = "APPLE_APP_PASSWORD"
+    _APP_PASSWORD_ENV = "APPLE_APP_PASSWORD"  # noqa: S105
 
     def __init__(
         self,

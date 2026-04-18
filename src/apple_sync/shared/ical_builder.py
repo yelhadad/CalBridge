@@ -35,12 +35,7 @@ def build_valarm(alert_minutes: int) -> str:
     Negative alert_minutes = before start; positive = after start.
     Standard usage: alert_minutes=15 → alert 15 minutes before.
     """
-    if alert_minutes >= 0:
-        trigger = f"-PT{alert_minutes}M"
-    else:
-        # Positive offset after start (unusual but valid)
-        trigger = f"PT{abs(alert_minutes)}M"
-
+    trigger = f"-PT{alert_minutes}M" if alert_minutes >= 0 else f"PT{abs(alert_minutes)}M"
     return (
         f"BEGIN:VALARM\r\nACTION:DISPLAY\r\nDESCRIPTION:Reminder\r\nTRIGGER:{trigger}\r\nEND:VALARM"
     )

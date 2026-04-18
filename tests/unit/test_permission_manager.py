@@ -57,7 +57,7 @@ class TestRemediationLogging:
 
         monkeypatch.setenv("APPLE_SYNC_MOCK", "true")
         monkeypatch.setenv("MOCK_AUTH_FAIL", "true")
-        with caplog.at_level(logging.ERROR, logger="apple_sync.permission_manager"):
+        with caplog.at_level(logging.ERROR, logger="apple_sync.permission_manager"):  # noqa: SIM117
             with pytest.raises(PermissionDeniedError):
                 PermissionManager().check_calendar_permission()
         assert any("AUTH_FAILED" in r.message for r in caplog.records)
