@@ -42,17 +42,11 @@ def build_valarm(alert_minutes: int) -> str:
         trigger = f"PT{abs(alert_minutes)}M"
 
     return (
-        "BEGIN:VALARM\r\n"
-        "ACTION:DISPLAY\r\n"
-        "DESCRIPTION:Reminder\r\n"
-        f"TRIGGER:{trigger}\r\n"
-        "END:VALARM"
+        f"BEGIN:VALARM\r\nACTION:DISPLAY\r\nDESCRIPTION:Reminder\r\nTRIGGER:{trigger}\r\nEND:VALARM"
     )
 
 
 def validate_recurrence(value: str) -> None:
     """Raise ValueError if recurrence value is not a supported frequency."""
     if value.lower() not in RECURRENCE_FREQS:
-        raise ValueError(
-            f"recurrence must be one of {sorted(RECURRENCE_FREQS)}, got {value!r}"
-        )
+        raise ValueError(f"recurrence must be one of {sorted(RECURRENCE_FREQS)}, got {value!r}")

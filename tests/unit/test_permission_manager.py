@@ -5,7 +5,6 @@ import pytest
 from apple_sync.integration.permission_manager import (
     PermissionDeniedError,
     PermissionManager,
-    PermissionRestrictedError,
 )
 
 
@@ -55,6 +54,7 @@ class TestReminderPermission:
 class TestRemediationLogging:
     def test_remediation_logged_on_failure(self, monkeypatch, caplog):
         import logging
+
         monkeypatch.setenv("APPLE_SYNC_MOCK", "true")
         monkeypatch.setenv("MOCK_AUTH_FAIL", "true")
         with caplog.at_level(logging.ERROR, logger="apple_sync.permission_manager"):

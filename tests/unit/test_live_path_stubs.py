@@ -2,8 +2,6 @@
 
 from unittest.mock import MagicMock, patch
 
-import pytest
-
 from apple_sync.integration.calendar_writer import CalendarWriter
 from apple_sync.integration.reminder_writer import ReminderWriter
 
@@ -21,14 +19,23 @@ def _mock_calendar(name="Work", supports_todos=False):
 
 def _parse_mock_event(ical, cal_name, saved):
     from apple_sync.integration.mock_store import MockVEvent
-    evt = MockVEvent({"id": "live-1", "title": "T", "start": "2026-04-18T10:00:00",
-                      "end": "2026-04-18T11:00:00", "calendar": cal_name})
+
+    evt = MockVEvent(
+        {
+            "id": "live-1",
+            "title": "T",
+            "start": "2026-04-18T10:00:00",
+            "end": "2026-04-18T11:00:00",
+            "calendar": cal_name,
+        }
+    )
     saved.append(evt)
     return evt
 
 
 def _parse_mock_todo(ical, list_name, saved):
     from apple_sync.integration.mock_store import MockVTodo
+
     todo = MockVTodo({"id": "live-r1", "title": "T", "priority": 0, "list": list_name})
     saved.append(todo)
     return todo
@@ -52,7 +59,9 @@ class TestCalendarWriterLivePath:
             mock_cls.return_value.principal.return_value = mock_principal
             writer = self._writer()
             result = writer.create_event(
-                "Meeting", "2026-04-18T10:00:00", "2026-04-18T11:00:00",
+                "Meeting",
+                "2026-04-18T10:00:00",
+                "2026-04-18T11:00:00",
                 calendar_name="Work",
             )
         assert result["title"] == "T"
@@ -70,7 +79,9 @@ class TestCalendarWriterLivePath:
             mock_cls.return_value.principal.return_value = mock_principal
             writer = self._writer()
             result = writer.create_event(
-                "Meeting", "2026-04-18T10:00:00", "2026-04-18T11:00:00",
+                "Meeting",
+                "2026-04-18T10:00:00",
+                "2026-04-18T11:00:00",
                 calendar_name="NonExistent",
             )
         assert result["title"] == "T"

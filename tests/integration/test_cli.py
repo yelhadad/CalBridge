@@ -43,9 +43,12 @@ class TestCreateEventCommand:
             cli,
             [
                 "create-event",
-                "--title", "Test Meeting",
-                "--start", "2026-04-17T10:00:00",
-                "--end", "2026-04-17T11:00:00",
+                "--title",
+                "Test Meeting",
+                "--start",
+                "2026-04-17T10:00:00",
+                "--end",
+                "2026-04-17T11:00:00",
             ],
         )
         assert result.exit_code == 0
@@ -58,11 +61,16 @@ class TestCreateEventCommand:
             cli,
             [
                 "create-event",
-                "--title", "Meeting",
-                "--start", "2026-04-17T14:00:00",
-                "--end", "2026-04-17T15:00:00",
-                "--location", "Office",
-                "--notes", "Bring docs",
+                "--title",
+                "Meeting",
+                "--start",
+                "2026-04-17T14:00:00",
+                "--end",
+                "2026-04-17T15:00:00",
+                "--location",
+                "Office",
+                "--notes",
+                "Bring docs",
             ],
         )
         assert result.exit_code == 0
@@ -72,8 +80,15 @@ class TestCreateEventCommand:
     def test_invalid_title_returns_error(self, runner):
         result = runner.invoke(
             cli,
-            ["create-event", "--title", "", "--start", "2026-04-17T10:00:00",
-             "--end", "2026-04-17T11:00:00"],
+            [
+                "create-event",
+                "--title",
+                "",
+                "--start",
+                "2026-04-17T10:00:00",
+                "--end",
+                "2026-04-17T11:00:00",
+            ],
         )
         assert result.exit_code == 1
         data = json.loads(result.output)
@@ -93,9 +108,12 @@ class TestCreateReminderCommand:
             cli,
             [
                 "create-reminder",
-                "--title", "Submit report",
-                "--due-date", "2026-04-20T09:00:00",
-                "--priority", "7",
+                "--title",
+                "Submit report",
+                "--due-date",
+                "2026-04-20T09:00:00",
+                "--priority",
+                "7",
             ],
         )
         assert result.exit_code == 0

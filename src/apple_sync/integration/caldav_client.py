@@ -58,9 +58,7 @@ class CalDAVClient:
         try:
             import caldav  # type: ignore[import]
         except ImportError as exc:
-            raise ImportError(
-                "caldav package is required. Install with: uv add caldav"
-            ) from exc
+            raise ImportError("caldav package is required. Install with: uv add caldav") from exc
 
         try:
             client = caldav.DAVClient(

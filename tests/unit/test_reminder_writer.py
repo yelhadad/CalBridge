@@ -23,9 +23,7 @@ class TestCreateReminder:
         assert result["title"] == "Buy milk"
 
     def test_with_due_date(self, writer):
-        result = writer.create_reminder(
-            "Submit report", due_date="2026-04-20T09:00:00"
-        )
+        result = writer.create_reminder("Submit report", due_date="2026-04-20T09:00:00")
         assert result["due_date"] is not None
 
     def test_with_priority(self, writer):

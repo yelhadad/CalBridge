@@ -9,6 +9,7 @@ from apple_sync.integration.permission_manager import PermissionDeniedError
 
 class ConcreteIntegration(BaseIntegration):
     """Minimal concrete subclass for testing the abstract base."""
+
     pass
 
 
@@ -27,6 +28,7 @@ class TestGetStore:
     def test_live_mode_no_caldav_raises_import_error(self, monkeypatch):
         """When caldav is not importable, raise ImportError."""
         import builtins
+
         real_import = builtins.__import__
 
         def mock_import(name, *args, **kwargs):

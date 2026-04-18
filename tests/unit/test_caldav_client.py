@@ -34,6 +34,7 @@ class TestCalDAVClientMissingCredentials:
         monkeypatch.delenv("APPLE_APP_PASSWORD", raising=False)
 
         from apple_sync.integration.caldav_client import CalDAVClient
+
         client = CalDAVClient()
         with pytest.raises(AuthenticationError) as exc:
             client.get_principal()
@@ -45,6 +46,7 @@ class TestCalDAVClientMissingCredentials:
         monkeypatch.setenv("APPLE_APP_PASSWORD", "xxxx")
 
         from apple_sync.integration.caldav_client import CalDAVClient
+
         client = CalDAVClient()
         with pytest.raises(AuthenticationError):
             client.get_principal()
@@ -54,6 +56,7 @@ class TestCalDAVClientMissingCredentials:
         monkeypatch.delenv("APPLE_ID", raising=False)
         monkeypatch.delenv("APPLE_APP_PASSWORD", raising=False)
         from apple_sync.integration.caldav_client import CalDAVClient
+
         client = CalDAVClient(apple_id="", app_password="")
         with pytest.raises(AuthenticationError):
             client.get_principal()
@@ -65,6 +68,7 @@ class TestCalDAVClientMissingCredentials:
         monkeypatch.setenv("APPLE_APP_PASSWORD", "xxxx-xxxx-xxxx-xxxx")
 
         from unittest.mock import MagicMock, patch
+
         from apple_sync.integration.caldav_client import CalDAVClient
 
         mock_client = MagicMock()
@@ -82,6 +86,7 @@ class TestCalDAVClientMissingCredentials:
         monkeypatch.setenv("APPLE_APP_PASSWORD", "xxxx-xxxx-xxxx-xxxx")
 
         from unittest.mock import MagicMock, patch
+
         from apple_sync.integration.caldav_client import CalDAVClient
 
         mock_client = MagicMock()

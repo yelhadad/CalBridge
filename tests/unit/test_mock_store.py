@@ -39,12 +39,27 @@ class TestMockCalDAVStore:
 class TestMockCalendar:
     def test_date_search_filters_by_range(self):
         from datetime import datetime
+
         cal = MockCalendar("Test")
         cal._events = [
-            MockVEvent({"id": "1", "title": "In range", "start": "2026-04-17T10:00:00",
-                        "end": "2026-04-17T11:00:00", "calendar": "Test"}),
-            MockVEvent({"id": "2", "title": "Out of range", "start": "2026-04-20T10:00:00",
-                        "end": "2026-04-20T11:00:00", "calendar": "Test"}),
+            MockVEvent(
+                {
+                    "id": "1",
+                    "title": "In range",
+                    "start": "2026-04-17T10:00:00",
+                    "end": "2026-04-17T11:00:00",
+                    "calendar": "Test",
+                }
+            ),
+            MockVEvent(
+                {
+                    "id": "2",
+                    "title": "Out of range",
+                    "start": "2026-04-20T10:00:00",
+                    "end": "2026-04-20T11:00:00",
+                    "calendar": "Test",
+                }
+            ),
         ]
         start = datetime(2026, 4, 17, 0, 0, 0)
         end = datetime(2026, 4, 17, 23, 59, 59)

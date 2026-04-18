@@ -43,15 +43,24 @@ class CalendarWriter(BaseIntegration):
         store = self._get_store()
         target = self._get_target_calendar(store, calendar_name)
         ical = self._build_ical(
-            title, start_datetime, end_datetime, location, notes,
-            recurrence, recurrence_count, recurrence_until, alert_minutes,
+            title,
+            start_datetime,
+            end_datetime,
+            location,
+            notes,
+            recurrence,
+            recurrence_count,
+            recurrence_until,
+            alert_minutes,
         )
 
         result = target.save_event(ical)
         logger.info(
             "create_event: created '%s' in '%s' (recurrence=%s, alert=%s)",
-            title, getattr(target, "name", calendar_name or DEFAULT_CALENDAR),
-            recurrence, alert_minutes,
+            title,
+            getattr(target, "name", calendar_name or DEFAULT_CALENDAR),
+            recurrence,
+            alert_minutes,
         )
         return event_to_dict(result)
 

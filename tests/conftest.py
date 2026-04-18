@@ -1,6 +1,7 @@
 """Shared pytest fixtures for unit and integration tests."""
 
 import logging
+
 import pytest
 
 from apple_sync.integration.mock_store import MockCalDAVStore, MockVEvent, MockVTodo
@@ -29,25 +30,29 @@ def mock_store():
 @pytest.fixture()
 def sample_event():
     """Return a single MockVEvent for assertion tests."""
-    return MockVEvent({
-        "id": "test-001",
-        "title": "Test Event",
-        "start": "2026-04-17T10:00:00",
-        "end": "2026-04-17T11:00:00",
-        "calendar": "Work",
-        "location": "Office",
-        "notes": "Test notes",
-    })
+    return MockVEvent(
+        {
+            "id": "test-001",
+            "title": "Test Event",
+            "start": "2026-04-17T10:00:00",
+            "end": "2026-04-17T11:00:00",
+            "calendar": "Work",
+            "location": "Office",
+            "notes": "Test notes",
+        }
+    )
 
 
 @pytest.fixture()
 def sample_reminder():
     """Return a single MockVTodo for assertion tests."""
-    return MockVTodo({
-        "id": "test-rem-001",
-        "title": "Test Reminder",
-        "notes": "Test notes",
-        "due_date": "2026-04-17T18:00:00",
-        "priority": 5,
-        "list": "Work",
-    })
+    return MockVTodo(
+        {
+            "id": "test-rem-001",
+            "title": "Test Reminder",
+            "notes": "Test notes",
+            "due_date": "2026-04-17T18:00:00",
+            "priority": 5,
+            "list": "Work",
+        }
+    )

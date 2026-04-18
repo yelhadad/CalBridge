@@ -33,7 +33,10 @@ class CalendarReader(BaseIntegration):
 
         logger.info(
             "read_events: found %d events (%s → %s, calendar=%s)",
-            len(events), start, end, calendar_name or "all",
+            len(events),
+            start,
+            end,
+            calendar_name or "all",
         )
         return [event_to_dict(e) for e in events]
 
@@ -44,10 +47,7 @@ class CalendarReader(BaseIntegration):
         else:
             # iCloud's get_properties() returns empty dicts, so we include all
             # calendars and skip only known reminder-only collections.
-            cals = [
-                c for c in store.calendars()
-                if not self._is_reminder_only_calendar(c)
-            ]
+            cals = [c for c in store.calendars() if not self._is_reminder_only_calendar(c)]
 
         if calendar_name:
             InputValidator.validate_non_empty_string(calendar_name, "calendar_name")
@@ -63,9 +63,7 @@ class CalendarReader(BaseIntegration):
         reminder_hints = ("reminder", "⚠️")
         return any(hint in name for hint in reminder_hints)
 
-    def _search_calendar(
-        self, cal: Any, start_dt: datetime, end_dt: datetime
-    ) -> list[Any]:
+    def _search_calendar(self, cal: Any, start_dt: datetime, end_dt: datetime) -> list[Any]:
         """Search a single calendar for events in the date range."""
         try:
             return list(cal.date_search(start=start_dt, end=end_dt, expand=True))

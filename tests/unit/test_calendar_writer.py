@@ -13,30 +13,28 @@ def writer():
 
 class TestCreateEvent:
     def test_success_returns_dict(self, writer):
-        result = writer.create_event(
-            "Meeting", "2026-04-17T10:00:00", "2026-04-17T11:00:00"
-        )
+        result = writer.create_event("Meeting", "2026-04-17T10:00:00", "2026-04-17T11:00:00")
         assert isinstance(result, dict)
 
     def test_result_has_required_keys(self, writer):
-        result = writer.create_event(
-            "Meeting", "2026-04-17T10:00:00", "2026-04-17T11:00:00"
-        )
+        result = writer.create_event("Meeting", "2026-04-17T10:00:00", "2026-04-17T11:00:00")
         assert "id" in result
         assert "title" in result
         assert result["title"] == "Meeting"
 
     def test_custom_calendar(self, writer):
         result = writer.create_event(
-            "Meeting", "2026-04-17T10:00:00", "2026-04-17T11:00:00",
-            calendar_name="Work"
+            "Meeting", "2026-04-17T10:00:00", "2026-04-17T11:00:00", calendar_name="Work"
         )
         assert result["calendar"] == "Work"
 
     def test_with_location_and_notes(self, writer):
         result = writer.create_event(
-            "Meeting", "2026-04-17T10:00:00", "2026-04-17T11:00:00",
-            location="Office", notes="Bring laptop"
+            "Meeting",
+            "2026-04-17T10:00:00",
+            "2026-04-17T11:00:00",
+            location="Office",
+            notes="Bring laptop",
         )
         assert result["location"] == "Office"
         assert result["notes"] == "Bring laptop"
@@ -56,7 +54,6 @@ class TestCreateEvent:
 
     def test_unknown_calendar_falls_back_to_default(self, writer):
         result = writer.create_event(
-            "Meeting", "2026-04-17T10:00:00", "2026-04-17T11:00:00",
-            calendar_name="NonExistent"
+            "Meeting", "2026-04-17T10:00:00", "2026-04-17T11:00:00", calendar_name="NonExistent"
         )
         assert result["title"] == "Meeting"

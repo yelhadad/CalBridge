@@ -1,7 +1,8 @@
 """Unit tests for CalendarSDK facade."""
 
+from unittest.mock import patch
+
 import pytest
-from unittest.mock import MagicMock, patch
 
 from apple_sync.sdk.calendar_sdk import CalendarSDK
 
@@ -23,8 +24,15 @@ class TestCalendarSDK:
             mock_read.assert_called_once_with("today", "today", "Work")
 
     def test_create_event_delegates_to_writer(self, sdk):
-        expected = {"id": "x", "title": "T", "start": "s", "end": "e", "calendar": "C",
-                    "location": "", "notes": ""}
+        expected = {
+            "id": "x",
+            "title": "T",
+            "start": "s",
+            "end": "e",
+            "calendar": "C",
+            "location": "",
+            "notes": "",
+        }
         with patch.object(sdk._writer, "create_event", return_value=expected) as mock_write:
             result = sdk.create_event("T", "2026-04-17T10:00:00", "2026-04-17T11:00:00")
             mock_write.assert_called_once()

@@ -36,7 +36,9 @@ class CalendarSDK:
     ) -> dict[str, Any]:
         """Create a new calendar event; supports recurrence and alerts."""
         return self._writer.create_event(
-            title, start_datetime, end_datetime,
+            title,
+            start_datetime,
+            end_datetime,
             recurrence=recurrence,
             recurrence_count=recurrence_count,
             recurrence_until=recurrence_until,

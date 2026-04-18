@@ -5,10 +5,20 @@ from apple_sync.integration.reminder_writer import ReminderWriter
 from apple_sync.shared.ical_builder import build_rrule, build_valarm
 
 
-def _vevent(title="T", start="2026-04-17T10:00:00", end="2026-04-17T11:00:00",
-            location="", notes="", recurrence=None, count=None, until=None, alert=None):
-    return CalendarWriter._build_ical(title, start, end, location, notes,
-                                      recurrence, count, until, alert)
+def _vevent(
+    title="T",
+    start="2026-04-17T10:00:00",
+    end="2026-04-17T11:00:00",
+    location="",
+    notes="",
+    recurrence=None,
+    count=None,
+    until=None,
+    alert=None,
+):
+    return CalendarWriter._build_ical(
+        title, start, end, location, notes, recurrence, count, until, alert
+    )
 
 
 def _vtodo(title="T", notes="", due=None, priority=0, alert=None):

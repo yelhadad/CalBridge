@@ -41,7 +41,8 @@ class ReminderWriter(BaseIntegration):
         result = target.save_todo(ical)
         logger.info(
             "create_reminder: created '%s' in list '%s' (alert=%s)",
-            title, getattr(target, "name", list_name or DEFAULT_REMINDER_LIST),
+            title,
+            getattr(target, "name", list_name or DEFAULT_REMINDER_LIST),
             alert_minutes,
         )
         return reminder_to_dict(result)

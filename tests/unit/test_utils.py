@@ -4,6 +4,7 @@ from datetime import datetime
 
 import pytest
 
+from apple_sync.integration.mock_store import MockVEvent, MockVTodo
 from apple_sync.shared.utils import (
     event_to_dict,
     parse_date_range,
@@ -11,7 +12,6 @@ from apple_sync.shared.utils import (
     serialize_datetime,
 )
 from apple_sync.shared.validators import ValidationError
-from apple_sync.integration.mock_store import MockVEvent, MockVTodo
 
 
 class TestParseDateRange:
@@ -58,7 +58,15 @@ class TestSerializeDatetime:
 class TestEventToDict:
     def test_structure(self, sample_event):
         result = event_to_dict(sample_event)
-        assert set(result.keys()) == {"id", "title", "start", "end", "calendar", "location", "notes"}
+        assert set(result.keys()) == {
+            "id",
+            "title",
+            "start",
+            "end",
+            "calendar",
+            "location",
+            "notes",
+        }
 
     def test_values(self, sample_event):
         result = event_to_dict(sample_event)
@@ -67,8 +75,9 @@ class TestEventToDict:
         assert result["start"] == "2026-04-17T10:00:00"
 
     def test_missing_calendar_returns_empty(self):
-        evt = MockVEvent({"id": "x", "title": "T", "start": "2026-04-17T10:00:00",
-                          "end": "2026-04-17T11:00:00"})
+        evt = MockVEvent(
+            {"id": "x", "title": "T", "start": "2026-04-17T10:00:00", "end": "2026-04-17T11:00:00"}
+        )
         result = event_to_dict(evt)
         assert isinstance(result["calendar"], str)
 

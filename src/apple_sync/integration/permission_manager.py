@@ -72,6 +72,4 @@ class PermissionManager:
 
     def _log_remediation(self, label: str) -> None:
         """Log actionable remediation steps when credentials are missing."""
-        logger.error(
-            "AUTH_FAILED for %s. %s", label, AUTH_REMEDIATION
-        )
+        logger.error("AUTH_FAILED for %s. %s", label, AUTH_REMEDIATION)

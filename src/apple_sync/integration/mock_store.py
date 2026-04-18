@@ -51,14 +51,9 @@ class MockCalendar:
         self._events: list[MockVEvent] = []
         self._todos: list[MockVTodo] = []
 
-    def date_search(
-        self, start: datetime, end: datetime, expand: bool = True
-    ) -> list[MockVEvent]:
+    def date_search(self, start: datetime, end: datetime, expand: bool = True) -> list[MockVEvent]:
         """Return events within the date range."""
-        return [
-            e for e in self._events
-            if e.start_dt and start <= e.start_dt <= end
-        ]
+        return [e for e in self._events if e.start_dt and start <= e.start_dt <= end]
 
     def save_event(self, ical_string: str) -> MockVEvent:
         """Parse ical string and append a new MockVEvent."""
@@ -80,15 +75,17 @@ class MockCalendar:
             if ":" in line
             for k, v in [line.split(":", 1)]
         }
-        return MockVEvent({
-            "id": lines.get("UID", str(uuid.uuid4())),
-            "title": lines.get("SUMMARY", ""),
-            "start": lines.get("DTSTART", ""),
-            "end": lines.get("DTEND", ""),
-            "location": lines.get("LOCATION", ""),
-            "notes": lines.get("DESCRIPTION", ""),
-            "calendar": self.name,
-        })
+        return MockVEvent(
+            {
+                "id": lines.get("UID", str(uuid.uuid4())),
+                "title": lines.get("SUMMARY", ""),
+                "start": lines.get("DTSTART", ""),
+                "end": lines.get("DTEND", ""),
+                "location": lines.get("LOCATION", ""),
+                "notes": lines.get("DESCRIPTION", ""),
+                "calendar": self.name,
+            }
+        )
 
     def _parse_vtodo(self, ical: str) -> MockVTodo:
         """Extract key fields from an iCal VTODO string."""
@@ -103,14 +100,16 @@ class MockCalendar:
             priority = int(priority_str)
         except ValueError:
             priority = 0
-        return MockVTodo({
-            "id": lines.get("UID", str(uuid.uuid4())),
-            "title": lines.get("SUMMARY", ""),
-            "notes": lines.get("DESCRIPTION", ""),
-            "due_date": lines.get("DUE", None),
-            "priority": priority,
-            "list": self.name,
-        })
+        return MockVTodo(
+            {
+                "id": lines.get("UID", str(uuid.uuid4())),
+                "title": lines.get("SUMMARY", ""),
+                "notes": lines.get("DESCRIPTION", ""),
+                "due_date": lines.get("DUE"),
+                "priority": priority,
+                "list": self.name,
+            }
+        )
 
 
 # Import constants after class definitions to avoid circular issues

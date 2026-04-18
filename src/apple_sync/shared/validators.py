@@ -3,8 +3,8 @@
 from datetime import datetime
 
 from .constants import (
-    DATETIME_FORMAT,
     DATE_FORMAT,
+    DATETIME_FORMAT,
     MAX_NOTES_LENGTH,
     MAX_TITLE_LENGTH,
     PRIORITY_MAX,
@@ -39,9 +39,7 @@ class InputValidator:
         try:
             datetime.strptime(value, DATETIME_FORMAT)
         except (ValueError, TypeError) as exc:
-            raise ValidationError(
-                field, f"Must be YYYY-MM-DDTHH:MM:SS, got: {value!r}"
-            ) from exc
+            raise ValidationError(field, f"Must be YYYY-MM-DDTHH:MM:SS, got: {value!r}") from exc
 
     @staticmethod
     def validate_priority(value: int, field: str = "priority") -> None:

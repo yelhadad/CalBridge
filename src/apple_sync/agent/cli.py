@@ -53,7 +53,8 @@ def _handle_error(exc: Exception) -> dict:
     """Convert known exceptions to standardized error responses."""
     if isinstance(exc, (AuthenticationError, PermissionDeniedError)):
         return error_response(
-            ERROR_CODES["AUTH_FAILED"], str(exc),
+            ERROR_CODES["AUTH_FAILED"],
+            str(exc),
             "Set APPLE_ID and APPLE_APP_PASSWORD environment variables.",
         )
     if isinstance(exc, NetworkError):
@@ -72,7 +73,9 @@ def _handle_error(exc: Exception) -> dict:
 def read_events(start: str, end: str, calendar: str | None) -> None:
     """Read calendar events and print JSON to stdout."""
     try:
-        _out(success_response(CalendarSDK(mock_mode=_mock_mode()).read_events(start, end, calendar)))
+        _out(
+            success_response(CalendarSDK(mock_mode=_mock_mode()).read_events(start, end, calendar))
+        )
     except Exception as exc:  # noqa: BLE001
         _out(_handle_error(exc))
         raise SystemExit(1) from exc
@@ -85,28 +88,46 @@ def read_events(start: str, end: str, calendar: str | None) -> None:
 @click.option("--calendar", default=None, help="Target calendar name")
 @click.option("--location", default="", help="Event location")
 @click.option("--notes", default="", help="Event notes")
-@click.option("--recurrence", default=None,
-              type=click.Choice(["daily", "weekly", "monthly", "yearly"]),
-              help="Recurrence frequency")
-@click.option("--recurrence-count", default=None, type=int,
-              help="Stop after N occurrences")
-@click.option("--recurrence-until", default=None,
-              help="Stop recurrence on date (YYYY-MM-DD)")
-@click.option("--alert", "alert_minutes", default=None, type=int,
-              help="Alert N minutes before event (e.g. 15)")
+@click.option(
+    "--recurrence",
+    default=None,
+    type=click.Choice(["daily", "weekly", "monthly", "yearly"]),
+    help="Recurrence frequency",
+)
+@click.option("--recurrence-count", default=None, type=int, help="Stop after N occurrences")
+@click.option("--recurrence-until", default=None, help="Stop recurrence on date (YYYY-MM-DD)")
+@click.option(
+    "--alert",
+    "alert_minutes",
+    default=None,
+    type=int,
+    help="Alert N minutes before event (e.g. 15)",
+)
 def create_event(
-    title: str, start: str, end: str, calendar: str | None,
-    location: str, notes: str, recurrence: str | None,
-    recurrence_count: int | None, recurrence_until: str | None,
+    title: str,
+    start: str,
+    end: str,
+    calendar: str | None,
+    location: str,
+    notes: str,
+    recurrence: str | None,
+    recurrence_count: int | None,
+    recurrence_until: str | None,
     alert_minutes: int | None,
 ) -> None:
     """Create a calendar event and print JSON to stdout."""
     try:
         data = CalendarSDK(mock_mode=_mock_mode()).create_event(
-            title, start, end,
-            calendar_name=calendar, location=location, notes=notes,
-            recurrence=recurrence, recurrence_count=recurrence_count,
-            recurrence_until=recurrence_until, alert_minutes=alert_minutes,
+            title,
+            start,
+            end,
+            calendar_name=calendar,
+            location=location,
+            notes=notes,
+            recurrence=recurrence,
+            recurrence_count=recurrence_count,
+            recurrence_until=recurrence_until,
+            alert_minutes=alert_minutes,
         )
         _out(success_response(data))
     except Exception as exc:  # noqa: BLE001
@@ -120,17 +141,30 @@ def create_event(
 @click.option("--due-date", default=None, help="Due datetime (YYYY-MM-DDTHH:MM:SS)")
 @click.option("--priority", default=0, type=int, help="Priority 0-9")
 @click.option("--list", "list_name", default=None, help="Target reminder list")
-@click.option("--alert", "alert_minutes", default=None, type=int,
-              help="Alert N minutes before due date (e.g. 30)")
+@click.option(
+    "--alert",
+    "alert_minutes",
+    default=None,
+    type=int,
+    help="Alert N minutes before due date (e.g. 30)",
+)
 def create_reminder(
-    title: str, notes: str, due_date: str | None,
-    priority: int, list_name: str | None, alert_minutes: int | None,
+    title: str,
+    notes: str,
+    due_date: str | None,
+    priority: int,
+    list_name: str | None,
+    alert_minutes: int | None,
 ) -> None:
     """Create a reminder and print JSON to stdout."""
     try:
         data = ReminderSDK(mock_mode=_mock_mode()).create_reminder(
-            title, notes=notes, due_date=due_date,
-            priority=priority, list_name=list_name, alert_minutes=alert_minutes,
+            title,
+            notes=notes,
+            due_date=due_date,
+            priority=priority,
+            list_name=list_name,
+            alert_minutes=alert_minutes,
         )
         _out(success_response(data))
     except Exception as exc:  # noqa: BLE001

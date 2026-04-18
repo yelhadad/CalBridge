@@ -14,8 +14,16 @@ def _make_ical_prop(value):
 
 
 class TestLiveVEventToDict:
-    def _make_live_event(self, uid="uid1", summary="Test", start=None, end=None,
-                          location="", description="", cal_name="Work"):
+    def _make_live_event(
+        self,
+        uid="uid1",
+        summary="Test",
+        start=None,
+        end=None,
+        location="",
+        description="",
+        cal_name="Work",
+    ):
         """Build a mock caldav Event with an icalendar_component."""
         ical = MagicMock()
         ical.get = lambda key, default=None: {
@@ -36,7 +44,15 @@ class TestLiveVEventToDict:
     def test_extracts_all_fields(self):
         event = self._make_live_event()
         result = event_to_dict(event)
-        assert set(result.keys()) == {"id", "title", "start", "end", "calendar", "location", "notes"}
+        assert set(result.keys()) == {
+            "id",
+            "title",
+            "start",
+            "end",
+            "calendar",
+            "location",
+            "notes",
+        }
 
     def test_uid_mapped_to_id(self):
         event = self._make_live_event(uid="test-uid")
@@ -65,8 +81,9 @@ class TestLiveVEventToDict:
 
 
 class TestLiveVTodoToDict:
-    def _make_live_reminder(self, uid="uid1", summary="Task", due=None,
-                             priority=0, notes="", list_name="Reminders"):
+    def _make_live_reminder(
+        self, uid="uid1", summary="Task", due=None, priority=0, notes="", list_name="Reminders"
+    ):
         """Build a mock caldav Todo with an icalendar_component."""
         ical = MagicMock()
         due_prop = _make_ical_prop(due) if due else None

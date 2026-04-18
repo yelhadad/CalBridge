@@ -29,7 +29,9 @@ class ReminderReader(BaseIntegration):
 
         logger.info(
             "read_reminders: found %d reminders (list=%s, include_completed=%s)",
-            len(reminders), list_name or "all", include_completed,
+            len(reminders),
+            list_name or "all",
+            include_completed,
         )
         return [reminder_to_dict(r) for r in reminders]
 
@@ -64,8 +66,7 @@ class ReminderReader(BaseIntegration):
             if isinstance(lst, MockCalDAVStore.__class__):
                 return lst._todos
             # Live CalDAV: use search for VTODO components
-            todos = lst.search(comp_class="VTODO", todo=True,
-                               include_completed=include_completed)
+            todos = lst.search(comp_class="VTODO", todo=True, include_completed=include_completed)
             return list(todos)
         except Exception as exc:  # noqa: BLE001
             logger.warning("Failed to fetch todos from list %s: %s", _list_name(lst), exc)

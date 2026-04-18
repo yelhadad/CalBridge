@@ -1,7 +1,8 @@
 """Unit tests for ReminderSDK facade."""
 
-import pytest
 from unittest.mock import patch
+
+import pytest
 
 from apple_sync.sdk.reminder_sdk import ReminderSDK
 
@@ -13,8 +14,14 @@ def sdk():
 
 class TestReminderSDK:
     def test_create_reminder_delegates_to_writer(self, sdk):
-        expected = {"id": "r1", "title": "T", "notes": "", "due_date": None,
-                    "priority": 0, "list": "Reminders"}
+        expected = {
+            "id": "r1",
+            "title": "T",
+            "notes": "",
+            "due_date": None,
+            "priority": 0,
+            "list": "Reminders",
+        }
         with patch.object(sdk._writer, "create_reminder", return_value=expected) as mock_write:
             result = sdk.create_reminder("T")
             mock_write.assert_called_once_with("T", alert_minutes=None)
@@ -28,4 +35,6 @@ class TestReminderSDK:
     def test_create_reminder_with_kwargs_passed_through(self, sdk):
         with patch.object(sdk._writer, "create_reminder", return_value={}) as mock_write:
             sdk.create_reminder("Task", priority=5, notes="Details")
-            mock_write.assert_called_once_with("Task", alert_minutes=None, priority=5, notes="Details")
+            mock_write.assert_called_once_with(
+                "Task", alert_minutes=None, priority=5, notes="Details"
+            )
