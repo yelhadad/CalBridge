@@ -28,9 +28,10 @@ ERROR_CODES = {
 
 AUTH_REMEDIATION = (
     "Remediation:\n"
-    "  1. Verify APPLE_ID environment variable is your iCloud email\n"
-    "  2. Generate an App-Specific Password at https://appleid.apple.com\n"
-    "     → Sign-In and Security → App-Specific Passwords → '+'\n"
-    "  3. Set APPLE_APP_PASSWORD to the generated xxxx-xxxx-xxxx-xxxx value\n"
-    "  OR set APPLE_SYNC_MOCK=true for testing without real credentials."
+    "  Option A (recommended): run `calbridge configure` to store credentials once.\n"
+    "  Option B (env vars):    export APPLE_ID and APPLE_APP_PASSWORD in your shell.\n"
+    "  Option C (CI/containers): set APPLE_ID and APPLE_APP_PASSWORD as secrets.\n"
+    "  Generate an App-Specific Password at https://appleid.apple.com\n"
+    "  → Sign-In and Security → App-Specific Passwords → '+'\n"
+    "  OR set APPLE_SYNC_MOCK=true to run without real credentials."
 )

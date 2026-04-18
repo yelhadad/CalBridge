@@ -13,6 +13,7 @@ from ..integration.caldav_client import AuthenticationError, NetworkError
 from ..integration.permission_manager import PermissionDeniedError, PermissionRestrictedError
 from ..sdk.calendar_sdk import CalendarSDK
 from ..sdk.reminder_sdk import ReminderSDK
+from ..shared.config_store import CONFIG_FILE, save_config
 from ..shared.constants import ERROR_CODES
 from ..shared.validators import ValidationError
 from .responses import error_response, success_response
@@ -170,6 +171,22 @@ def create_reminder(
     except Exception as exc:  # noqa: BLE001
         _out(_handle_error(exc))
         raise SystemExit(1) from exc
+
+
+@cli.command("configure")
+def configure() -> None:
+    """Interactively save Apple credentials to ~/.config/calbridge/config.json."""
+    click.echo("CalBridge — one-time credential setup")
+    click.echo(f"Credentials will be stored in: {CONFIG_FILE}\n")
+    apple_id = click.prompt("Apple ID (iCloud email)")
+    app_password = click.prompt(
+        "App-Specific Password (generate at appleid.apple.com → App-Specific Passwords)",
+        hide_input=True,
+    )
+    save_config(apple_id, app_password)
+    click.echo(
+        "\nCredentials saved. Run `calbridge read-events --start today --end today` to test."
+    )
 
 
 @cli.command("list-tools")

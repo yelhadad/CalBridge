@@ -3,7 +3,7 @@ revision = 3
 requires-python = ">=3.11"
 
 [[package]]
-name = "apple-sync"
+name = "calbridge"
 version = "1.0"
 source = { editable = "." }
 dependencies = [

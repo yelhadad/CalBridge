@@ -4,6 +4,7 @@ import logging
 import os
 from typing import Any
 
+from ..shared.config_store import get_app_password, get_apple_id
 from ..shared.constants import AUTH_REMEDIATION, ERROR_CODES, ICAL_CALDAV_URL
 
 logger = logging.getLogger("calbridge.caldav_client")
@@ -40,8 +41,11 @@ class CalDAVClient:
         caldav_url: str = ICAL_CALDAV_URL,
     ) -> None:
         """Read credentials from args or environment variables."""
-        self._apple_id = apple_id or os.environ.get(self._APPLE_ID_ENV, "")
-        self._app_password = app_password or os.environ.get(self._APP_PASSWORD_ENV, "")
+        # Priority: constructor args → env vars → config file (~/.config/calbridge/config.json)
+        self._apple_id = apple_id or os.environ.get(self._APPLE_ID_ENV) or get_apple_id()
+        self._app_password = (
+            app_password or os.environ.get(self._APP_PASSWORD_ENV) or get_app_password()
+        )
         self._caldav_url = caldav_url
 
     def get_principal(self) -> Any:
