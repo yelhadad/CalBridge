@@ -1,0 +1,47 @@
+[
+  {
+    "id": "evt-001",
+    "title": "Team Standup",
+    "start": "2026-04-17T09:00:00",
+    "end": "2026-04-17T09:30:00",
+    "calendar": "Work",
+    "location": "Zoom",
+    "notes": "Daily sync"
+  },
+  {
+    "id": "evt-002",
+    "title": "Dentist Appointment",
+    "start": "2026-04-17T14:00:00",
+    "end": "2026-04-17T15:00:00",
+    "calendar": "Personal",
+    "location": "123 Main St",
+    "notes": ""
+  },
+  {
+    "id": "evt-003",
+    "title": "Product Review",
+    "start": "2026-04-18T10:00:00",
+    "end": "2026-04-18T11:00:00",
+    "calendar": "Work",
+    "location": "",
+    "notes": "Q2 product review session"
+  },
+  {
+    "id": "evt-004",
+    "title": "Lunch with Alice",
+    "start": "2026-04-16T12:00:00",
+    "end": "2026-04-16T13:00:00",
+    "calendar": "Personal",
+    "location": "Downtown Cafe",
+    "notes": ""
+  },
+  {
+    "id": "evt-005",
+    "title": "Sprint Planning",
+    "start": "2026-04-17T15:00:00",
+    "end": "2026-04-17T17:00:00",
+    "calendar": "Work",
+    "location": "Conference Room A",
+    "notes": "Two-week sprint kickoff"
+  }
+]

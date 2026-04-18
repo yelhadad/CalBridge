@@ -1,0 +1,18 @@
+{
+  "version": "1.00",
+  "eventkit_notes": "EventKit is a local framework; no API rate limits. Limits below are application-level safeguards.",
+  "read_events": {
+    "max_date_range_days": 365,
+    "max_results_per_query": 1000
+  },
+  "create_event": {
+    "max_title_length": 255,
+    "max_notes_length": 10000
+  },
+  "create_reminder": {
+    "max_title_length": 255,
+    "max_notes_length": 10000,
+    "priority_min": 0,
+    "priority_max": 9
+  }
+}

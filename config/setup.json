@@ -1,0 +1,13 @@
+{
+  "version": "1.00",
+  "app_name": "apple-sync",
+  "description": "Headless Apple Calendar & Reminders integration for OpenClaw Agent",
+  "author": "Senior AI Coding Agent",
+  "min_macos_version": "12.0",
+  "min_python_version": "3.11",
+  "supported_entity_types": ["event", "reminder"],
+  "default_calendar": "Calendar",
+  "default_reminder_list": "Reminders",
+  "mock_mode_env_var": "APPLE_SYNC_MOCK",
+  "mock_permission_env_var": "MOCK_PERMISSION_STATE"
+}

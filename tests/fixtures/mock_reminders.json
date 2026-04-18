@@ -1,0 +1,29 @@
+[
+  {
+    "id": "rem-001",
+    "title": "Buy groceries",
+    "notes": "Milk, eggs, bread",
+    "due_date": "2026-04-17T18:00:00",
+    "priority": 5,
+    "list": "Reminders",
+    "completed": false
+  },
+  {
+    "id": "rem-002",
+    "title": "Submit expense report",
+    "notes": "Q1 expenses",
+    "due_date": "2026-04-20T09:00:00",
+    "priority": 7,
+    "list": "Work",
+    "completed": false
+  },
+  {
+    "id": "rem-003",
+    "title": "Call mom",
+    "notes": "",
+    "due_date": null,
+    "priority": 0,
+    "list": "Personal",
+    "completed": false
+  }
+]
