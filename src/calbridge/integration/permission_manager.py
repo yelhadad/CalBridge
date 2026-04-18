@@ -8,6 +8,7 @@ iCloud CalDAV server.
 import logging
 import os
 
+from ..shared.config_store import get_app_password, get_apple_id
 from ..shared.constants import AUTH_REMEDIATION
 
 logger = logging.getLogger("calbridge.permission_manager")
@@ -60,9 +61,9 @@ class PermissionManager:
         logger.debug("Mock credential check passed for %s", label)
 
     def _check_live(self, label: str) -> None:
-        """Verify APPLE_ID and APPLE_APP_PASSWORD are present in environment."""
-        apple_id = os.environ.get("APPLE_ID", "")
-        app_password = os.environ.get("APPLE_APP_PASSWORD", "")
+        """Verify credentials exist via env vars or config file."""
+        apple_id = os.environ.get("APPLE_ID") or get_apple_id()
+        app_password = os.environ.get("APPLE_APP_PASSWORD") or get_app_password()
         if not apple_id or not app_password:
             self._log_remediation(label)
             raise PermissionDeniedError(
