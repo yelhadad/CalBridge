@@ -56,7 +56,7 @@ class CalDAVClient:
         """
         if not self._apple_id or not self._app_password:
             raise AuthenticationError(
-                "APPLE_ID and APPLE_APP_PASSWORD environment variables are required."
+                "No credentials found. Run `calbridge configure` to set them up."
             )
 
         try:

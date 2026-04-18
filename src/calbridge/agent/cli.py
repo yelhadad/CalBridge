@@ -56,7 +56,7 @@ def _handle_error(exc: Exception) -> dict:
         return error_response(
             ERROR_CODES["AUTH_FAILED"],
             str(exc),
-            "Set APPLE_ID and APPLE_APP_PASSWORD environment variables.",
+            "Run `calbridge configure` or set APPLE_ID and APPLE_APP_PASSWORD env vars.",
         )
     if isinstance(exc, NetworkError):
         return error_response(ERROR_CODES["NETWORK_ERROR"], str(exc))
@@ -187,6 +187,29 @@ def configure() -> None:
     click.echo(
         "\nCredentials saved. Run `calbridge read-events --start today --end today` to test."
     )
+
+
+@cli.command("doctor")
+def doctor() -> None:
+    """Diagnose credential sources — shows where credentials are (or aren't) coming from."""
+    import os
+
+    from ..shared.config_store import CONFIG_FILE, get_app_password, get_apple_id
+
+    click.echo(f"Config file path : {CONFIG_FILE}")
+    click.echo(f"Config file exists: {CONFIG_FILE.exists()}")
+
+    file_id = get_apple_id()
+    file_pw = get_app_password()
+    id_status = f"SET ({file_id[:4]}...)" if file_id else "MISSING"
+    click.echo(f"Config file apple_id     : {id_status}")
+    click.echo(f"Config file app_password : {'SET' if file_pw else 'MISSING'}")
+
+    env_id = os.environ.get("APPLE_ID", "")
+    env_pw = os.environ.get("APPLE_APP_PASSWORD", "")
+    env_id_status = f"SET ({env_id[:4]}...)" if env_id else "NOT SET"
+    click.echo(f"Env APPLE_ID             : {env_id_status}")
+    click.echo(f"Env APPLE_APP_PASSWORD   : {'SET' if env_pw else 'NOT SET'}")
 
 
 @cli.command("list-tools")

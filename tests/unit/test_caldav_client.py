@@ -3,6 +3,14 @@
 import pytest
 
 from calbridge.integration.caldav_client import AuthenticationError, NetworkError
+from calbridge.shared import config_store
+
+
+@pytest.fixture(autouse=True)
+def _no_real_config(tmp_path, monkeypatch):
+    """Isolate all tests from the real ~/.config/calbridge/config.json."""
+    monkeypatch.setattr(config_store, "CONFIG_DIR", tmp_path)
+    monkeypatch.setattr(config_store, "CONFIG_FILE", tmp_path / "config.json")
 
 
 class TestAuthenticationError:
