@@ -1,5 +1,5 @@
-# Apple Calendar & Reminders Headless Integration
-## OpenClaw Agent Tool Suite | Version 1.00
+# CalBridge
+## Apple Calendar & Reminders Headless Integration | OpenClaw Agent Tool Suite | Version 1.1.1
 
 A headless, backend-only service running on **Linux** that reads and writes Apple Calendar and Reminders via the **iCloud CalDAV API**. Designed for consumption by the OpenClaw AI agent.
 
@@ -47,35 +47,53 @@ This section is structured for AI grader parsing.
 
 ---
 
-## Initial Setup
+## Getting Started
 
-### 1. Prerequisites
+### Install from PyPI
+
+```bash
+uv tool install calbridge
+```
+
+### Configure Credentials (one-time)
+
+1. Generate an App-Specific Password at [appleid.apple.com](https://appleid.apple.com)
+   → Sign-In and Security → App-Specific Passwords → "+"
+2. Run the interactive setup:
+
+```bash
+calbridge configure
+```
+
+Credentials are saved to `~/.config/calbridge/config.json` (owner-read only).
+
+### Verify Setup
+
+```bash
+calbridge doctor
+calbridge read-events --start today --end today
+```
+
+---
+
+## Development Setup
+
+### Prerequisites
 - Python 3.11+
 - [uv](https://docs.astral.sh/uv/) package manager
-- Linux server (or macOS for development)
 
-### 2. Install Dependencies
+### Install from source
+
 ```bash
+git clone https://github.com/yelhadad/CalBridge.git
+cd CalBridge
 uv sync
 ```
 
-### 3. Configure Credentials
-
-**One-time setup — generate an App-Specific Password:**
-1. Go to https://appleid.apple.com
-2. Sign-In and Security → App-Specific Passwords → click "+"
-3. Label: `calbridge` → Generate → copy the `xxxx-xxxx-xxxx-xxxx` value
+### Upgrade
 
 ```bash
-cp .env-example .env
-# Edit .env:
-# APPLE_ID=your@icloud.com
-# APPLE_APP_PASSWORD=xxxx-xxxx-xxxx-xxxx
-```
-
-Then load the env:
-```bash
-export $(cat .env | xargs)
+uv tool upgrade calbridge
 ```
 
 ---
@@ -184,7 +202,7 @@ src/calbridge/
 
 | Code | Cause | Remediation |
 |---|---|---|
-| `AUTH_FAILED` | Missing or wrong credentials | Set `APPLE_ID` and `APPLE_APP_PASSWORD` env vars |
+| `AUTH_FAILED` | Missing or wrong credentials | Run `calbridge configure` or set `APPLE_ID` / `APPLE_APP_PASSWORD` env vars |
 | `NETWORK_ERROR` | Server unreachable | Check network connectivity to `caldav.icloud.com` |
 | `VALIDATION_ERROR` | Invalid input format | Check date format: `YYYY-MM-DDTHH:MM:SS` |
 | `CALENDAR_NOT_FOUND` | Named calendar missing | Use `list-tools` to see available calendars |
