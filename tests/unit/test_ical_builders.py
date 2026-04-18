@@ -1,8 +1,8 @@
 """Unit tests for iCal string builders in CalendarWriter and ReminderWriter."""
 
-from apple_sync.integration.calendar_writer import CalendarWriter, _to_ical_dt
-from apple_sync.integration.reminder_writer import ReminderWriter
-from apple_sync.shared.ical_builder import build_rrule, build_valarm
+from calbridge.integration.calendar_writer import CalendarWriter, _to_ical_dt
+from calbridge.integration.reminder_writer import ReminderWriter
+from calbridge.shared.ical_builder import build_rrule, build_valarm
 
 
 def _vevent(

@@ -20,7 +20,7 @@ class BaseIntegration(ABC):  # noqa: B024
         if mock_mode is None:
             mock_mode = os.environ.get(self._MOCK_ENV, "false").lower() == "true"
         self._mock_mode = mock_mode
-        self._logger = logging.getLogger(f"apple_sync.{self.__class__.__name__}")
+        self._logger = logging.getLogger(f"calbridge.{self.__class__.__name__}")
         self._permission_manager = PermissionManager()
 
     def _check_calendar_permission(self) -> None:

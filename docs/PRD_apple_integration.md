@@ -25,7 +25,7 @@ iCloud accounts with 2FA (mandatory for most users) cannot use the account passw
 **One-time setup:**
 1. Go to https://appleid.apple.com
 2. Sign-In and Security → App-Specific Passwords
-3. Click "+" → Label: "apple-sync" → Generate
+3. Click "+" → Label: "calbridge" → Generate
 4. Copy the generated password into `APPLE_APP_PASSWORD` env var
 
 ### 2.2 Environment Variables

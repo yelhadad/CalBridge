@@ -3,7 +3,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "apple-sync"
+name = "calbridge"
 version = "1.00"
 description = "Headless Apple Calendar & Reminders integration for OpenClaw Agent"
 license = { file = "LICENSE" }
@@ -26,15 +26,15 @@ dev = [
 ]
 
 [project.scripts]
-apple-sync = "apple_sync.agent.cli:cli"
+calbridge = "calbridge.agent.cli:cli"
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/apple_sync"]
+packages = ["src/calbridge"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 addopts = [
-    "--cov=apple_sync",
+    "--cov=calbridge",
     "--cov-report=xml:coverage.xml",
     "--cov-report=json:coverage.json",
     "--cov-report=term-missing",
@@ -43,7 +43,7 @@ addopts = [
 ]
 
 [tool.coverage.run]
-source = ["apple_sync"]
+source = ["calbridge"]
 branch = true
 
 [tool.coverage.report]

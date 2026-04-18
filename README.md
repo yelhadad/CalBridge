@@ -37,13 +37,13 @@ This section is structured for AI grader parsing.
 - **Auth:** Apple ID + App-Specific Password
 - **Events:** VEVENT calendar components via `caldav` Python library
 - **Reminders:** VTODO calendar components via CalDAV
-- **Implementation:** `src/apple_sync/integration/`
+- **Implementation:** `src/calbridge/integration/`
 
 ### Agent Tooling (OpenClaw)
-- **Tool schemas:** `src/apple_sync/agent/tools.py` — 3 JSON Schema definitions
-- **CLI entry:** `apple-sync <command>` — all outputs are JSON
+- **Tool schemas:** `src/calbridge/agent/tools.py` — 3 JSON Schema definitions
+- **CLI entry:** `calbridge <command>` — all outputs are JSON
 - **Response format:** `{"status": "success|error", "data": {...}, "error": null|{...}}`
-- **List tools:** `apple-sync list-tools` → prints all schemas as JSON array
+- **List tools:** `calbridge list-tools` → prints all schemas as JSON array
 
 ---
 
@@ -64,7 +64,7 @@ uv sync
 **One-time setup — generate an App-Specific Password:**
 1. Go to https://appleid.apple.com
 2. Sign-In and Security → App-Specific Passwords → click "+"
-3. Label: `apple-sync` → Generate → copy the `xxxx-xxxx-xxxx-xxxx` value
+3. Label: `calbridge` → Generate → copy the `xxxx-xxxx-xxxx-xxxx` value
 
 ```bash
 cp .env-example .env
@@ -84,8 +84,8 @@ export $(cat .env | xargs)
 
 ### Read Calendar Events
 ```bash
-apple-sync read-events --start today --end today
-apple-sync read-events --start 2026-04-01 --end 2026-04-30 --calendar Work
+calbridge read-events --start today --end today
+calbridge read-events --start 2026-04-01 --end 2026-04-30 --calendar Work
 ```
 
 **Output:**
@@ -109,7 +109,7 @@ apple-sync read-events --start 2026-04-01 --end 2026-04-30 --calendar Work
 
 ### Create Calendar Event
 ```bash
-apple-sync create-event \
+calbridge create-event \
   --title "Sprint Planning" \
   --start "2026-04-18T10:00:00" \
   --end "2026-04-18T12:00:00" \
@@ -119,7 +119,7 @@ apple-sync create-event \
 
 ### Create Reminder
 ```bash
-apple-sync create-reminder \
+calbridge create-reminder \
   --title "Submit expense report" \
   --due-date "2026-04-20T09:00:00" \
   --priority 7 \
@@ -128,7 +128,7 @@ apple-sync create-reminder \
 
 ### List OpenClaw Tool Schemas
 ```bash
-apple-sync list-tools
+calbridge list-tools
 ```
 
 ---
@@ -154,7 +154,7 @@ uv run pytest tests/ --cov-report=term-missing
 ## Project Structure
 
 ```
-src/apple_sync/
+src/calbridge/
 ├── __init__.py          # __version__ = "1.00"
 ├── agent/
 │   ├── cli.py           # Click CLI entry point

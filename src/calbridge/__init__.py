@@ -1,4 +1,4 @@
-"""apple_sync — Headless Apple Calendar & Reminders integration for OpenClaw."""
+"""calbridge — Headless Apple Calendar & Reminders integration for OpenClaw."""
 
 from .shared.version import VERSION
 

@@ -75,7 +75,7 @@ A headless, backend-only macOS application that provides programmatic read/write
 ### NFR-04: Code Quality
 - Ruff linting: ZERO violations.
 - Max 150 LOC per file.
-- Relative imports within `src/apple_sync/`.
+- Relative imports within `src/calbridge/`.
 - All functions/classes have docstrings.
 
 ### NFR-05: Test Coverage

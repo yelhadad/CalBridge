@@ -4,7 +4,7 @@ from unittest.mock import patch
 
 import pytest
 
-from apple_sync.sdk.reminder_sdk import ReminderSDK
+from calbridge.sdk.reminder_sdk import ReminderSDK
 
 
 @pytest.fixture()

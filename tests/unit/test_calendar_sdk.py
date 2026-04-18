@@ -4,7 +4,7 @@ from unittest.mock import patch
 
 import pytest
 
-from apple_sync.sdk.calendar_sdk import CalendarSDK
+from calbridge.sdk.calendar_sdk import CalendarSDK
 
 
 @pytest.fixture()

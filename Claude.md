@@ -28,7 +28,7 @@ You must strictly follow these phases in exact order. Do not write implementatio
 ## Strict Project Structure
 project-root/
 ├── src/
-│   └── apple_sync/
+│   └── calbridge/
 │       ├── __init__.py   # MUST use __all__ and define __version__
 │       ├── sdk/          # Single entry point for ALL business logic
 │       ├── agent/        # OpenClaw tool definitions and JSON-RPC/CLI wrappers
@@ -45,7 +45,7 @@ project-root/
 ## Technical Constraints & Quality Rules
 * **Environment Manager:** ONLY use `uv`. NO direct `pip` commands. 
 * **Dependencies Rule:** `pyproject.toml` is the ONLY source of truth for dependencies and project configuration.
-* **Imports:** STRICTLY use Relative Imports within the `src/apple_sync/` package.
+* **Imports:** STRICTLY use Relative Imports within the `src/calbridge/` package.
 * **Code Comments:** STRICTLY ENGLISH ONLY. Explain "Why", not just "What". Every class/function needs a Docstring.
 * **File Size Limit:** STRICTLY MAX 150 LINES OF CODE per file. Extract logic to helpers, mixins, or constants.
 * **Logging:** STRICTLY NO `print()` statements. All output must be routed through Python's `logging` module, configured via `config/logging_config.json`. Log all permission denials and agent requests clearly.

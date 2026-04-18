@@ -3,7 +3,7 @@
 from datetime import date, datetime
 from unittest.mock import MagicMock
 
-from apple_sync.shared.utils import event_to_dict, reminder_to_dict
+from calbridge.shared.utils import event_to_dict, reminder_to_dict
 
 
 def _make_ical_prop(value):

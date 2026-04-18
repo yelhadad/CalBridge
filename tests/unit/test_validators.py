@@ -2,7 +2,7 @@
 
 import pytest
 
-from apple_sync.shared.validators import InputValidator, ValidationError
+from calbridge.shared.validators import InputValidator, ValidationError
 
 
 class TestValidateDateString:

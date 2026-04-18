@@ -12,7 +12,7 @@ from ..shared.validators import InputValidator
 from .base import BaseIntegration
 from .mock_store import MockCalDAVStore
 
-logger = logging.getLogger("apple_sync.reminder_writer")
+logger = logging.getLogger("calbridge.reminder_writer")
 
 
 class ReminderWriter(BaseIntegration):
@@ -91,7 +91,7 @@ class ReminderWriter(BaseIntegration):
         lines = [
             "BEGIN:VCALENDAR",
             "VERSION:2.0",
-            "PRODID:-//apple-sync//ReminderWriter//EN",
+            "PRODID:-//calbridge//ReminderWriter//EN",
             "BEGIN:VTODO",
             f"UID:{uuid.uuid4()}",
             f"SUMMARY:{title}",

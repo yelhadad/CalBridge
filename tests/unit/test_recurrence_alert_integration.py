@@ -2,8 +2,8 @@
 
 import pytest
 
-from apple_sync.integration.calendar_writer import CalendarWriter
-from apple_sync.integration.reminder_writer import ReminderWriter
+from calbridge.integration.calendar_writer import CalendarWriter
+from calbridge.integration.reminder_writer import ReminderWriter
 
 
 @pytest.fixture()

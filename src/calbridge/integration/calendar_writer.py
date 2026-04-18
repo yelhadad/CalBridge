@@ -12,7 +12,7 @@ from ..shared.validators import InputValidator
 from .base import BaseIntegration
 from .mock_store import MockCalDAVStore
 
-logger = logging.getLogger("apple_sync.calendar_writer")
+logger = logging.getLogger("calbridge.calendar_writer")
 
 
 class CalendarWriter(BaseIntegration):
@@ -99,7 +99,7 @@ class CalendarWriter(BaseIntegration):
         lines = [
             "BEGIN:VCALENDAR",
             "VERSION:2.0",
-            "PRODID:-//apple-sync//CalendarWriter//EN",
+            "PRODID:-//calbridge//CalendarWriter//EN",
             "BEGIN:VEVENT",
             f"UID:{uuid.uuid4()}",
             f"SUMMARY:{title}",

@@ -2,7 +2,7 @@
 
 import json
 
-from apple_sync.agent.tools import (
+from calbridge.agent.tools import (
     ALL_TOOLS,
     CREATE_EVENT_TOOL_SCHEMA,
     CREATE_REMINDER_TOOL_SCHEMA,

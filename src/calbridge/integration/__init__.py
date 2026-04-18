@@ -1,4 +1,4 @@
-"""CalDAV integration layer for apple_sync."""
+"""CalDAV integration layer for calbridge."""
 
 from .caldav_client import AuthenticationError, CalDAVClient, NetworkError
 from .calendar_reader import CalendarReader

@@ -10,7 +10,7 @@ import os
 
 from ..shared.constants import AUTH_REMEDIATION
 
-logger = logging.getLogger("apple_sync.permission_manager")
+logger = logging.getLogger("calbridge.permission_manager")
 
 
 class PermissionDeniedError(PermissionError):

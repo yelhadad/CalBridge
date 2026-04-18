@@ -4,13 +4,13 @@ import logging
 
 import pytest
 
-from apple_sync.integration.mock_store import MockCalDAVStore, MockVEvent, MockVTodo
+from calbridge.integration.mock_store import MockCalDAVStore, MockVEvent, MockVTodo
 
 
 @pytest.fixture(autouse=True)
 def suppress_logging():
-    """Silence apple_sync loggers during tests to keep CLI output clean."""
-    logging.getLogger("apple_sync").setLevel(logging.CRITICAL)
+    """Silence calbridge loggers during tests to keep CLI output clean."""
+    logging.getLogger("calbridge").setLevel(logging.CRITICAL)
 
 
 @pytest.fixture(autouse=True)

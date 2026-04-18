@@ -2,8 +2,8 @@
 
 from unittest.mock import MagicMock, patch
 
-from apple_sync.integration.calendar_writer import CalendarWriter
-from apple_sync.integration.reminder_writer import ReminderWriter
+from calbridge.integration.calendar_writer import CalendarWriter
+from calbridge.integration.reminder_writer import ReminderWriter
 
 
 def _mock_calendar(name="Work", supports_todos=False):
@@ -18,7 +18,7 @@ def _mock_calendar(name="Work", supports_todos=False):
 
 
 def _parse_mock_event(ical, cal_name, saved):
-    from apple_sync.integration.mock_store import MockVEvent
+    from calbridge.integration.mock_store import MockVEvent
 
     evt = MockVEvent(
         {
@@ -34,7 +34,7 @@ def _parse_mock_event(ical, cal_name, saved):
 
 
 def _parse_mock_todo(ical, list_name, saved):
-    from apple_sync.integration.mock_store import MockVTodo
+    from calbridge.integration.mock_store import MockVTodo
 
     todo = MockVTodo({"id": "live-r1", "title": "T", "priority": 0, "list": list_name})
     saved.append(todo)

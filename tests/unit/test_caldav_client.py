@@ -2,7 +2,7 @@
 
 import pytest
 
-from apple_sync.integration.caldav_client import AuthenticationError, NetworkError
+from calbridge.integration.caldav_client import AuthenticationError, NetworkError
 
 
 class TestAuthenticationError:
@@ -33,7 +33,7 @@ class TestCalDAVClientMissingCredentials:
         monkeypatch.delenv("APPLE_ID", raising=False)
         monkeypatch.delenv("APPLE_APP_PASSWORD", raising=False)
 
-        from apple_sync.integration.caldav_client import CalDAVClient
+        from calbridge.integration.caldav_client import CalDAVClient
 
         client = CalDAVClient()
         with pytest.raises(AuthenticationError) as exc:
@@ -45,7 +45,7 @@ class TestCalDAVClientMissingCredentials:
         monkeypatch.delenv("APPLE_ID", raising=False)
         monkeypatch.setenv("APPLE_APP_PASSWORD", "xxxx")
 
-        from apple_sync.integration.caldav_client import CalDAVClient
+        from calbridge.integration.caldav_client import CalDAVClient
 
         client = CalDAVClient()
         with pytest.raises(AuthenticationError):
@@ -55,7 +55,7 @@ class TestCalDAVClientMissingCredentials:
         monkeypatch.setenv("APPLE_SYNC_MOCK", "false")
         monkeypatch.delenv("APPLE_ID", raising=False)
         monkeypatch.delenv("APPLE_APP_PASSWORD", raising=False)
-        from apple_sync.integration.caldav_client import CalDAVClient
+        from calbridge.integration.caldav_client import CalDAVClient
 
         client = CalDAVClient(apple_id="", app_password="")
         with pytest.raises(AuthenticationError):
@@ -69,7 +69,7 @@ class TestCalDAVClientMissingCredentials:
 
         from unittest.mock import MagicMock, patch
 
-        from apple_sync.integration.caldav_client import CalDAVClient
+        from calbridge.integration.caldav_client import CalDAVClient
 
         mock_client = MagicMock()
         mock_client.principal.side_effect = Exception("connection refused")
@@ -87,7 +87,7 @@ class TestCalDAVClientMissingCredentials:
 
         from unittest.mock import MagicMock, patch
 
-        from apple_sync.integration.caldav_client import CalDAVClient
+        from calbridge.integration.caldav_client import CalDAVClient
 
         mock_client = MagicMock()
         mock_client.principal.side_effect = Exception("401 Unauthorized")

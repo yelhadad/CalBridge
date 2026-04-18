@@ -7,7 +7,7 @@
 ## C4 Level 1: System Context
 
 ```
-[OpenClaw Agent] --JSON params--> [apple_sync SDK] --CalDAV/HTTPS--> [Apple iCloud CalDAV Server]
+[OpenClaw Agent] --JSON params--> [calbridge SDK] --CalDAV/HTTPS--> [Apple iCloud CalDAV Server]
 ```
 
 Runs on: **Linux server** (Python 3.11+, no macOS dependency)
@@ -17,7 +17,7 @@ Runs on: **Linux server** (Python 3.11+, no macOS dependency)
 ## C4 Level 2: Container Diagram
 
 ```
-apple_sync/
+calbridge/
 ├── agent/          CLI + JSON-RPC wrappers (entry points for OpenClaw)
 ├── sdk/            Business logic orchestration (facade over integration/)
 ├── integration/    Apple iCloud CalDAV client (reader, writer, auth)

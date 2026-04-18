@@ -5,7 +5,7 @@ import json
 import pytest
 from click.testing import CliRunner
 
-from apple_sync.agent.cli import cli
+from calbridge.agent.cli import cli
 
 
 @pytest.fixture()

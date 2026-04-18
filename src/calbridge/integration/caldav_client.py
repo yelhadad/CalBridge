@@ -6,7 +6,7 @@ from typing import Any
 
 from ..shared.constants import AUTH_REMEDIATION, ERROR_CODES, ICAL_CALDAV_URL
 
-logger = logging.getLogger("apple_sync.caldav_client")
+logger = logging.getLogger("calbridge.caldav_client")
 
 
 class AuthenticationError(Exception):

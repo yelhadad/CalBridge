@@ -17,7 +17,7 @@
     }
   },
   "loggers": {
-    "apple_sync": {
+    "calbridge": {
       "level": "DEBUG",
       "handlers": ["console"],
       "propagate": false

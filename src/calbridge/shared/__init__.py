@@ -1,4 +1,4 @@
-"""Shared utilities and constants for apple_sync."""
+"""Shared utilities and constants for calbridge."""
 
 from .constants import AUTH_REMEDIATION, ERROR_CODES
 from .utils import event_to_dict, parse_date_range, reminder_to_dict, serialize_datetime

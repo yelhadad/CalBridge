@@ -7,7 +7,7 @@ from ..shared.utils import reminder_to_dict
 from .base import BaseIntegration
 from .mock_store import MockCalDAVStore
 
-logger = logging.getLogger("apple_sync.reminder_reader")
+logger = logging.getLogger("calbridge.reminder_reader")
 
 
 class ReminderReader(BaseIntegration):

@@ -9,7 +9,7 @@ from ..shared.validators import InputValidator
 from .base import BaseIntegration
 from .mock_store import MockCalDAVStore
 
-logger = logging.getLogger("apple_sync.calendar_reader")
+logger = logging.getLogger("calbridge.calendar_reader")
 
 
 class CalendarReader(BaseIntegration):

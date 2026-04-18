@@ -4,14 +4,14 @@ from datetime import datetime
 
 import pytest
 
-from apple_sync.integration.mock_store import MockVEvent, MockVTodo
-from apple_sync.shared.utils import (
+from calbridge.integration.mock_store import MockVEvent, MockVTodo
+from calbridge.shared.utils import (
     event_to_dict,
     parse_date_range,
     reminder_to_dict,
     serialize_datetime,
 )
-from apple_sync.shared.validators import ValidationError
+from calbridge.shared.validators import ValidationError
 
 
 class TestParseDateRange:

@@ -5,7 +5,7 @@
 ---
 
 ## PHASE 1: Project Scaffolding
-- [x] Create directory tree: src/apple_sync/{sdk,agent,integration,shared}, tests/{unit,integration}, docs/, config/
+- [x] Create directory tree: src/calbridge/{sdk,agent,integration,shared}, tests/{unit,integration}, docs/, config/
 - [x] Write docs/PRD.md (ISO 25010, functional requirements, non-functional requirements)
 - [x] Write docs/PLAN.md (C4 model, ADRs including permissions + mock strategy)
 - [x] Write docs/PRD_apple_integration.md (EventKit permissions, TCC, CI/CD mock)
@@ -20,7 +20,7 @@
 - [ ] Write config/rate_limits.json (version: 1.00, EventKit rate limits)
 - [ ] Write .env-example (APPLE_SYNC_MOCK, MOCK_PERMISSION_STATE)
 
-## PHASE 3: Shared Layer (src/apple_sync/shared/)
+## PHASE 3: Shared Layer (src/calbridge/shared/)
 - [ ] Write shared/version.py (VERSION = "1.00")
 - [ ] Write shared/constants.py (DATE_FORMAT, ERROR_CODES, PRIORITY_RANGE, DEFAULT_CALENDAR)
 - [ ] Write shared/validators.py
@@ -36,7 +36,7 @@
   - [ ] reminder_to_dict(ek_reminder) → dict
   - [ ] serialize_datetime(dt) → ISO 8601 string
 
-## PHASE 4: Integration Layer (src/apple_sync/integration/)
+## PHASE 4: Integration Layer (src/calbridge/integration/)
 - [ ] Write integration/base.py
   - [ ] class BaseIntegration (abstract)
     - [ ] __init__(mock_mode: bool)
@@ -76,7 +76,7 @@
     - [ ] _get_target_list(store, name) → EKCalendar (reminder list)
     - [ ] _build_reminder(store, title, notes, due_date, priority, list_obj) → EKReminder
 
-## PHASE 5: SDK Layer (src/apple_sync/sdk/)
+## PHASE 5: SDK Layer (src/calbridge/sdk/)
 - [ ] Write sdk/calendar_sdk.py
   - [ ] class CalendarSDK
     - [ ] __init__(mock_mode: bool = False)
@@ -87,7 +87,7 @@
     - [ ] __init__(mock_mode: bool = False)
     - [ ] create_reminder(title, **kwargs) → dict
 
-## PHASE 6: Agent Layer (src/apple_sync/agent/)
+## PHASE 6: Agent Layer (src/calbridge/agent/)
 - [ ] Write agent/tools.py
   - [ ] READ_CALENDAR_TOOL_SCHEMA (JSON schema dict)
   - [ ] CREATE_EVENT_TOOL_SCHEMA (JSON schema dict)
@@ -104,11 +104,11 @@
   - [ ] @cli.command list-tools (prints ALL_TOOLS as JSON)
 
 ## PHASE 7: Package Init
-- [ ] Write src/apple_sync/__init__.py (__all__, __version__, top-level imports)
-- [ ] Write src/apple_sync/sdk/__init__.py
-- [ ] Write src/apple_sync/agent/__init__.py
-- [ ] Write src/apple_sync/integration/__init__.py
-- [ ] Write src/apple_sync/shared/__init__.py
+- [ ] Write src/calbridge/__init__.py (__all__, __version__, top-level imports)
+- [ ] Write src/calbridge/sdk/__init__.py
+- [ ] Write src/calbridge/agent/__init__.py
+- [ ] Write src/calbridge/integration/__init__.py
+- [ ] Write src/calbridge/shared/__init__.py
 
 ## PHASE 8: Test Fixtures
 - [ ] Write tests/fixtures/mock_events.json (5+ sample events)

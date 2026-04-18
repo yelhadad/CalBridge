@@ -1,4 +1,4 @@
-"""OpenClaw tool schema definitions for all apple_sync capabilities."""
+"""OpenClaw tool schema definitions for all calbridge capabilities."""
 
 READ_CALENDAR_TOOL_SCHEMA: dict = {
     "name": "read_calendar_events",

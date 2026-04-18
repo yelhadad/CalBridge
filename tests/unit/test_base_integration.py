@@ -2,9 +2,9 @@
 
 import pytest
 
-from apple_sync.integration.base import BaseIntegration
-from apple_sync.integration.mock_store import MockCalDAVStore
-from apple_sync.integration.permission_manager import PermissionDeniedError
+from calbridge.integration.base import BaseIntegration
+from calbridge.integration.mock_store import MockCalDAVStore
+from calbridge.integration.permission_manager import PermissionDeniedError
 
 
 class ConcreteIntegration(BaseIntegration):

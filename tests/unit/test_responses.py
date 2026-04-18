@@ -1,6 +1,6 @@
 """Unit tests for agent response builders."""
 
-from apple_sync.agent.responses import error_response, success_response
+from calbridge.agent.responses import error_response, success_response
 
 
 class TestSuccessResponse:

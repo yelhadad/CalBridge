@@ -2,8 +2,8 @@
 
 import pytest
 
-from apple_sync.integration.calendar_reader import CalendarReader
-from apple_sync.shared.validators import ValidationError
+from calbridge.integration.calendar_reader import CalendarReader
+from calbridge.shared.validators import ValidationError
 
 
 @pytest.fixture()

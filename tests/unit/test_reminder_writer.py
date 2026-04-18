@@ -2,8 +2,8 @@
 
 import pytest
 
-from apple_sync.integration.reminder_writer import ReminderWriter
-from apple_sync.shared.validators import ValidationError
+from calbridge.integration.reminder_writer import ReminderWriter
+from calbridge.shared.validators import ValidationError
 
 
 @pytest.fixture()

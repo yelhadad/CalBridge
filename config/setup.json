@@ -1,6 +1,6 @@
 {
   "version": "1.00",
-  "app_name": "apple-sync",
+  "app_name": "calbridge",
   "description": "Headless Apple Calendar & Reminders integration for OpenClaw Agent",
   "author": "Senior AI Coding Agent",
   "min_macos_version": "12.0",

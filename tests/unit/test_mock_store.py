@@ -1,6 +1,6 @@
 """Unit tests for MockCalDAVStore fixture loading and behavior."""
 
-from apple_sync.integration.mock_store import MockCalDAVStore, MockCalendar, MockVEvent, MockVTodo
+from calbridge.integration.mock_store import MockCalDAVStore, MockCalendar, MockVEvent, MockVTodo
 
 
 class TestMockCalDAVStore:
